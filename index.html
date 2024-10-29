@@ -29,7 +29,7 @@
         #Customers, #items, #placeOrder {
             display: none;
             height: 100vh;
-            margin-top: 100px;
+            margin-top: 35px;
         }
 
         #customer img, #item img {
@@ -76,7 +76,7 @@
     <p class="fs-1 text-center">Customer Form</p>
     <!-- Content for Customer Form -->
     <div class="container">
-        <div class="card mx-auto" style="max-width: 800px;">
+        <div class="card mx-auto" style="max-width: 1000px;">
             <div class="card-body">
                 <form id="customerForm">
                     <div class="row g-3">
@@ -104,7 +104,7 @@
     </div>
 
     <div class="container mt-5">
-        <table class="table table-striped mx-auto" style="max-width: 800px;">
+        <table class="table table-striped mx-auto" style="max-width: 1000px;">
             <thead>
             <tr>
                 <th scope="col">Full name</th>
@@ -126,26 +126,26 @@
     <p class="fs-1 text-center">Item Form</p>
     <!-- Content for Items Form -->
     <div class="container">
-        <div class="card mx-auto" style="max-width: 800px;">
+        <div class="card mx-auto" style="max-width: 1000px;">
             <div class="card-body">
                 <div class="row g-3">
                     <div class="col-md-6">
-                        <input type="text" class="form-control" placeholder="ItemCode" aria-label="ID">
+                        <input type="text" class="form-control" placeholder="ItemCode" aria-label="ItemCode" id="code">
                     </div>
                     <div class="col-md-6">
-                        <input type="text" class="form-control" placeholder="Description" aria-label="Name">
+                        <input type="text" class="form-control" placeholder="Description" aria-label="Description" id="description">
                     </div>
                     <div class="col-md-6">
-                        <input type="text" class="form-control" placeholder="Unit Price" aria-label="Tel Number">
+                        <input type="text" class="form-control" placeholder="Unit Price" aria-label="Unit Price" id="price">
                     </div>
                     <div class="col-md-6">
-                        <input type="text" class="form-control" placeholder="QtyOnHand" aria-label="Address">
+                        <input type="text" class="form-control" placeholder="QtyOnHand" aria-label="QtyOnHand" id="qtyOnHand">
                     </div>
                 </div>
                 <div class="d-flex justify-content-center mt-4 gap-3">
-                    <button type="button" class="btn btn-primary">Save</button>
-                    <button type="button" class="btn btn-success">Update</button>
-                    <button type="button" class="btn btn-danger">Delete</button>
+                    <button type="button" class="btn btn-primary" id="saveItem">Save</button>
+                    <button type="button" class="btn btn-success" id="updateItem" >Update</button>
+                    <button type="button" class="btn btn-danger" id="deleteItem">Delete</button>
                 </div>
             </div>
         </div>
@@ -154,46 +154,16 @@
 
     <div class="container mt-5">
         <div class="scrollable-table">
-            <table class="table table-striped mx-auto" style="max-width: 800px;">
+            <table class="table table-striped mx-auto" style="max-width: 1000px;">
                 <thead>
                 <tr>
                     <th scope="col">Item Code</th>
-                    <th scope="col">Product Name</th>
+                    <th scope="col">Description</th>
                     <th scope="col">Unit Price</th>
                     <th scope="col">QtyOnHand</th>
                 </tr>
                 </thead>
-                <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Biscuits</td>
-                    <td>250.00</td>
-                    <td>4</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Chocolate</td>
-                    <td>150.00</td>
-                    <td>10</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Cereal</td>
-                    <td>200.00</td>
-                    <td>5</td>
-                </tr>
-                <tr>
-                    <th scope="row">4</th>
-                    <td>Milk</td>
-                    <td>100.00</td>
-                    <td>12</td>
-                </tr>
-                <tr>
-                    <th scope="row">5</th>
-                    <td>Juice</td>
-                    <td>90.00</td>
-                    <td>8</td>
-                </tr>
+                <tbody id="itemTableBody">
 
                 </tbody>
             </table>
@@ -341,6 +311,8 @@
 <script src=".idea/assests/jquery-3.7.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script type="module" src="controller/CustomerController.js"></script>
+<script type="module" src="controller/ItemController.js"></script>
 
 <script>
     const homeSection = document.getElementById("pic");
@@ -380,7 +352,7 @@
         orderSection.style.display = 'block';
     });
 </script>
-<script type="module" src="controller/CustomerController.js"></script>
+
 
 </body>
 </html>

@@ -1,9 +1,14 @@
-export const validateEmail = (email) => {
+export  const validateEmail = (email) => {
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     return emailRegex.test(email);
 }
 
-export const validateMobile = (mobile) => {
+export  const validateMobile = (mobile) => {
     const sriLankanMobileRegex = /^(?:\+94|0)?7[0-9]{8}$/;
     return sriLankanMobileRegex.test(mobile);
 }
+
+const validateUnitPrice = (unitPrice) => {
+    const unitPriceRegex = /^(?!0\.00)\d{1,8}(\.\d{1,2})?$/;
+    return unitPriceRegex.test(unitPrice);
+};

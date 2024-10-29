@@ -1,5 +1,6 @@
 import ItemModel from "../models/itemModel.js";
-import { item_array } from "../db/database";
+import {customer_array, item_array} from "../db/database.js";
+
 
 // Validate unit price
 const validateUnitPrice = (unitPrice) => {
@@ -24,6 +25,7 @@ const cleanItemForm = () => {
     $('#qtyOnHand').val("");
 }
 
+let selected_item_index=null;
 
 $("#saveItem").on("click", function () {
     console.log("Save button clicked");
@@ -46,7 +48,7 @@ $("#saveItem").on("click", function () {
     } else {
 
         let item = new ItemModel(code, description, price, qtyOnHand);
-
+        console.log(item);
 
         item_array.push(item);
 
@@ -57,3 +59,173 @@ $("#saveItem").on("click", function () {
         Swal.fire("Success", "Item added successfully", "success");
     }
 });
+
+$('#itemTableBody').on('click','tr',function (){
+    let index=$(this).index();
+
+    selected_item_index=$(this).index();
+    let item_obj=item_array[index];
+
+
+    let code=item_obj.code;
+    let description=item_obj.description;
+    let price=item_obj.price;
+    let qtyOnHand=item_obj.qtyOnHand;
+
+
+
+    $('#code').val(code);
+    $('#description').val(description);
+    $('#price').val(price);
+    $('#qtyOnHand').val(qtyOnHand);
+
+});
+
+
+$('#updateItem').on('click',function (){
+   let index=selected_item_index;
+
+
+   let code=$('#code').val();
+   let description=$('#description').val();
+   let price=$('#price').val();
+   let qtyOnHand=$('#qtyOnHand').val();
+
+
+
+   let item=new ItemModel(
+       code,
+       description,
+       price,
+       qtyOnHand
+   );
+
+   item_array[selected_item_index]=item;
+
+   cleanItemForm();
+   loadAllItemTable();
+});
+
+$("#deleteItem").on('click',function (){
+    const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+            confirmButton: "btn btn-success",
+            cancelButton: "btn btn-danger"
+        },
+        buttonsStyling: false
+    });
+    swalWithBootstrapButtons.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "No, cancel!",
+        reverseButtons: true
+    }).then((result) => {
+        if (result.isConfirmed) {
+
+            // ==========================================================
+            item_array.splice(selected_item_index, 1);
+
+            // clean customer form
+            cleanItemForm();
+
+            // reload the table
+            loadAllItemTable();
+            // ==========================================================
+
+            swalWithBootstrapButtons.fire({
+                title: "Deleted!",
+                text: "Your item has been deleted.",
+                icon: "success"
+            });
+        } else if (
+            /* Read more about handling dismissals below */
+            result.dismiss === Swal.DismissReason.cancel
+        ) {
+            swalWithBootstrapButtons.fire({
+                title: "Cancelled",
+                text: "Your imaginary file is safe :)",
+                icon: "error"
+            });
+        }
+    });
+
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

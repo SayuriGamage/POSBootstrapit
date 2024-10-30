@@ -184,47 +184,52 @@
 
                         <div class="row g-3 mb-3">
                             <div class="col-md-6">
-                                <input type="text" class="form-control" placeholder="Order ID" aria-label="Order ID">
+                                <input type="text" class="form-control" placeholder="Order ID" aria-label="Order ID" id="orderId">
                             </div>
                             <div class="col-md-6">
-                                <input type="text" class="form-control" placeholder="Order Date" aria-label="Order Date">
-                            </div>
-                        </div>
-
-
-                        <div class="row g-3 mb-3">
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" placeholder="Customer Tel" aria-label="Customer Tel">
-                            </div>
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" placeholder="Customer Name" aria-label="Customer Name">
+                                <input type="text" class="form-control" placeholder="Order Date" aria-label="Order Date" id="orderDate">
                             </div>
                         </div>
 
 
                         <div class="row g-3 mb-3">
                             <div class="col-md-6">
-                                <input type="text" class="form-control" placeholder="Item Code" aria-label="Item Code">
+                                <input type="text" class="form-control" placeholder="Customer Tel" aria-label="Customer Tel" id="cusTel">
                             </div>
                             <div class="col-md-6">
-                                <input type="text" class="form-control" placeholder="Item Name" aria-label="Item Name">
+                                <input type="text" class="form-control" placeholder="Customer Name" aria-label="Customer Name" id="cusName">
+                            </div>
+                        </div>
+
+
+                        <div class="row g-3 mb-3">
+                          <!--  <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Item Code" aria-label="Item Code" id="itCode">
+                            </div>-->
+                            <select class="form-select form-select-sm" aria-label="Small select example" id="itCode" >
+                                <option selected>Select item code</option>
+                                <option>code</option>
+                            </select>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Item Name" aria-label="Item Name" id="itName">
                             </div>
                         </div>
 
 
                         <div class="row g-3">
                             <div class="col-md-4">
-                                <input type="text" class="form-control" placeholder="Unit Price" aria-label="Unit Price">
+                                <input type="text" class="form-control" placeholder="Unit Price" aria-label="Unit Price" id="uPrice">
                             </div>
                             <div class="col-md-4">
-                                <input type="text" class="form-control" placeholder="Qty On Hand" aria-label="Qty On Hand">
+                                <input type="text" class="form-control" placeholder="Qty On Hand" aria-label="Qty On Hand" id="qtyOnHand1">
                             </div>
                             <div class="col-md-4">
-                                <input type="text" class="form-control" placeholder="Qty" aria-label="Qty">
+                                <input type="text" class="form-control" placeholder="Qty" aria-label="Qty" id="qty">
                             </div>
                         </div>
                         <div class="d-flex justify-content-end mt-3">
-                            <button type="button" class="btn btn-primary">Add to Cart</button>
+                            <button type="button" class="btn btn-primary" id="addToCart">Add to Cart</button>
                         </div>
                     </div>
                 </div>
@@ -280,28 +285,8 @@
                     <th scope="col">Total</th>
                 </tr>
                 </thead>
-                <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Biscuits</td>
-                    <td>200</td>
-                    <td>2</td>
-                    <td>400</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Chocolates</td>
-                    <td>150</td>
-                    <td>3</td>
-                    <td>450</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Cereal</td>
-                    <td>100</td>
-                    <td>1</td>
-                    <td>100</td>
-                </tr>
+                <tbody id="orderTableBody">
+
                 </tbody>
             </table>
         </div>
@@ -313,6 +298,7 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script type="module" src="controller/CustomerController.js"></script>
 <script type="module" src="controller/ItemController.js"></script>
+<script type="module" src="controller/OrderController.js"></script>
 
 <script>
     const homeSection = document.getElementById("pic");

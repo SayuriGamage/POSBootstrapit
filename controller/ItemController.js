@@ -1,6 +1,6 @@
 import ItemModel from "../models/itemModel.js";
 import {customer_array, item_array} from "../db/database.js";
-
+import {loadItemBx} from "./OrderController.js";
 
 // Validate unit price
 const validateUnitPrice = (unitPrice) => {
@@ -55,6 +55,7 @@ $("#saveItem").on("click", function () {
 
         cleanItemForm();
         loadAllItemTable();
+        loadItemBx()
 
         Swal.fire("Success", "Item added successfully", "success");
     }

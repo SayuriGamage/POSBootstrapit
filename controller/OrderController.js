@@ -56,13 +56,19 @@ $("#itCode").on('input', function () {
  }
 
 
- export const setTotalValues = () =>{
+export const setTotalValues = () => {
+    let netTotal = cart_array.reduce((acc, item) => acc + item.total, 0);
+    $("#netTotal").val(netTotal.toFixed(2));
+    $("#subTotal").val(netTotal.toFixed(2));
+   /* let cash=$('#cash').val();
+    let balance=cash-netTotal;
+    $("#balance").val(balance);*/
+};
 
- }
 
-
-
-
+ export const clearQty = () =>{
+     $('#qty').val("");
+ };
 
 
 
@@ -88,7 +94,9 @@ $("#addToCart").on("click",function (){
      )
         cart_array.push(cart);
      loadToCart();
+     clearQty();
      setTotalValues();
+
       }
 
 });
